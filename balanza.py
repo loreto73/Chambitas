@@ -38,3 +38,24 @@ Junio = cruce("06", "Junio")
 Julio = cruce("07", "Julio")
 Agosto = cruce("08", "Agosto")
 Septiembre = cruce("09", "Septiembre")
+
+def condiciones(mes):
+
+    mes.dropna(inplace=True)
+
+    conditions = [
+        mes['Valor en dólares'] < 1,
+        (mes['Valor en dólares'] >= 1) & (mes['Valor en dólares'] < 7),
+        (mes['Valor en dólares'] >= 7) & (mes['Valor en dólares'] < 10),
+        (mes['Valor en dólares'] >= 10) & (mes['Valor en dólares'] < 20),
+        (mes['Valor en dólares'] >= 20) & (mes['Valor en dólares'] < 30),
+        (mes['Valor en dólares'] >= 30) & (mes['Valor en dólares'] < 40),
+        (mes['Valor en dólares'] >= 40) & (mes['Valor en dólares'] < 50),
+        (mes['Valor en dólares'] >= 50) & (mes['Valor en dólares'] < 1000),
+        (mes['Valor en dólares'] >= 1000) & (mes['Valor en dólares'] < 2500),
+        (mes['Valor en dólares'] >= 2500) & (mes['Valor en dólares'] < 5000),
+        mes['Valor en dólares'] >= 5000
+    ]
+    choices = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11']
+    mes['Rango USD'] = np.select(conditions, choices)
+    return mes
