@@ -1,0 +1,1 @@
+Lo que se pretende con este código es importar varios archivos csv para cruzarlos. El primero tiene variables con filtros que requerimos. Los otros vienen en partes y se van a concateran. Posteriormete, se van a cruzar con un merge (left join). Esto para cada diferentes meses. Por tal motivo, requerimos de tres funciones.
